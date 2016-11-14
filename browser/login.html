@@ -1,0 +1,9 @@
+<div class = "container">
+	<form name='loginform' class = 'form-group'>
+		<label for="name"> User Name </label>	
+		<input id="name" ng-model = 'credentials.username' type = 'text' class = "form-control">
+		<label for="password"> Password </label>
+		<input id="password" class="form-control" type="password" ng-model="credentials.password">
+		<button class="btn btn-danger" ng-click='login()' ng-disabled='form.$invalid'> Log in! </button>
+	</form>
+</div>
