@@ -6,6 +6,37 @@ debateApp
 			.state('home',{
 				url:'/',
 				templateUrl:'/home.html',
+				controller: function($scope, $state){
+
+					$scope.disableButton = false;
+
+					var connection = new RTCMultiConnection();
+					console.log(connection);
+					console.log(typeof(connection));
+
+					connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+
+					connection.session = {
+						audio:true,
+						video:true,
+						ssl: false
+					}
+
+					connection.sdpConstraints.mandatory = {
+						OfferToReceiveAudio : true,
+						OfferToReceiveVideo : true,
+					}
+
+					$scope.ojroom = function(){
+						console.log("aaa");
+						$scope.disableButton = true;
+						connection.openOrJoin('doo');
+					}
+
+
+
+
+				},
 			})
 			.state('questions',{
 				resolve:{
